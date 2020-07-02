@@ -4,13 +4,14 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const koa = require('koa');
+const ctx = require('async');
 const app = new koa();
 
 app.on('error', (error, ctx) => {
     console.log('something error ' + JSON.stringify(ctx.onerror));
 });
 
-app.use(async ctx => {
+app.use(ctx => {
     ctx.body = `This is ${ctx.protocol} visit`;
 });
 
